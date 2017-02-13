@@ -7,8 +7,8 @@ Here we are using external Cassandra to persist events and external kafka for pu
 ## Prerequisites
 1. Java 1.8
 2. SBT 0.13.12
-3. Cassandra
-4. Kafka
+3. Cassandra 3.9
+4. Kafka 0.10.1.1
 
 
 ## Getting the Project
@@ -67,8 +67,8 @@ Route(Method - DELETE) : `localhost:9000/api/user/:id`
 
 Route(Method - GET) : `localhost:9000/api/user/:id`
 
-#### Publish message to kafka topic `greetings`
+### Publish message to kafka topic `greetings`
 `curl -H "Content-Type: application/json" -X POST -d '{"message":"Hi"}' http://localhost:9000/api/hello/Bob`
 
-#### Consume message from kafka topic
+### Consume message from kafka topic
 The application subscribes to the topic `greetings` and dump out messages to standard output.
