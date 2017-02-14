@@ -32,19 +32,19 @@ lazy val helloworldImpl = project("helloworld-impl")
 
 lazy val userApi = project("user-api")
   .settings(
-version := "1.0-SNAPSHOT",
-libraryDependencies += lagomJavadslApi
-).settings(commonSettings: _*)
+    version := "1.0-SNAPSHOT",
+    libraryDependencies += lagomJavadslApi
+  ).settings(commonSettings: _*)
 
 lazy val userImpl = project("user-impl")
   .enablePlugins(LagomJava)
   .settings(
-version := "1.0-SNAPSHOT",
-libraryDependencies ++= Seq(
-lagomJavadslPersistenceCassandra,
-lagomJavadslTestKit
-)
-)
+    version := "1.0-SNAPSHOT",
+    libraryDependencies ++= Seq(
+      lagomJavadslPersistenceCassandra,
+      lagomJavadslTestKit
+    )
+  )
   .settings(lagomForkedTestSettings: _*)
   .settings(commonSettings: _*)
   .dependsOn(userApi)
@@ -61,6 +61,8 @@ def project(id: String) = {
       "-Xlint:unchecked",
       "-Xlint:deprecation"))
     .settings(jacksonParameterNamesJavacSettings: _*)
+    .settings(jacoco.settings: _*)
+    .settings(findbugsSettings: _*)
 } // applying it to every project even if not
 // strictly needed.
 
@@ -75,3 +77,5 @@ lagomKafkaAddress in ThisBuild := "localhost:9092"
 
 lagomCassandraEnabled in ThisBuild := false
 lagomUnmanagedServices in ThisBuild := Map("cas_native" -> "http://localhost:9042")
+
+enablePlugins(CopyPasteDetector)
