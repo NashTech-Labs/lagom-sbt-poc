@@ -72,3 +72,17 @@ Route(Method - GET) : `localhost:9000/api/user/:id`
 
 ### Consume message from kafka topic
 The application subscribes to the topic `greetings` and dump out messages to standard output.
+
+## Tools Integrated
+
+### jacoco4sbt
+This is an sbt plugin for code coverage analysis via JaCoCo.
+You can run tests via `sbt jacoco:cover` and will receive a HTML report in `jacoco/html` subdirectory of your target directory.
+
+### cpd4sbt
+This SBT plug-in enables you to analyze your code with the help of the great PMD Copy/Paste Detector tool. It defines a cpd sbt action for that purpose.
+You can run it using `sbt cpd`
+
+### findbugs4sbt
+This SBT plug-in enables you to analyze your (Java) code with the help of the great FindBugs tool. It defines a findbugs sbt action for that purpose.
+You can run it using `sbt findbugs`
